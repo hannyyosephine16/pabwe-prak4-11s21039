@@ -45,25 +45,24 @@ const switchPlayer = function () {
 
 btnRoll.addEventListener("click", function () {
   if (playing === true) {
-   // 1. Generating a random dice roll
-  const dice = Math.trunc(Math.random() * 6) + 1;
+    // 1. Generating a random dice roll
+    const dice = Math.trunc(Math.random() * 6) + 1;
 
-  // 2. Display dice
-  diceEl.classList.remove("hidden");
-  diceEl.src = `/assets/dice-${dice}.png`;
+    // 2. Display dice
+    diceEl.classList.remove("hidden");
+    diceEl.src = `dice-${dice}.png`;
 
-  // 3. Check for rolled 1: if true, switch to next player
-  if (dice !== 1) {
-  // Add dice to current score
-  currentScore += dice;
-  document.getElementById(`current--${activePlayer}`).textContent =
-  currentScore;
-} else {
-  // Switch to next player
-  switchPlayer();
-}
-}
-
+    // 3. Check for rolled 1: if true, switch to next player
+    if (dice !== 1) {
+      // Add dice to current score
+      currentScore += dice;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      // Switch to next player
+      switchPlayer();
+    }
+  }
 });
 
 btnHold.addEventListener("click", function () {
@@ -71,7 +70,7 @@ btnHold.addEventListener("click", function () {
     // 1. Add current score to active player's score
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
-    scores[activePlayer];
+      scores[activePlayer];
 
     // 2. Check if player's score is >= 100
     if (scores[activePlayer] >= 100) {
@@ -80,11 +79,11 @@ btnHold.addEventListener("click", function () {
       diceEl.classList.add("hidden");
 
       document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add("player--winner");
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--winner");
       document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add("player--active");
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--active");
     }
 
     // switch to the next player
